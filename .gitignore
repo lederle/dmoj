@@ -1,0 +1,8 @@
+other_sols/
+.kattisrc
+**/*.out
+how_to_test/
+venv/
+
+**/*.o
+
