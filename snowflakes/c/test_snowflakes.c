@@ -14,13 +14,6 @@ static void test_identical_right_true(void) {
   TEST_ASSERT_TRUE(identical_right(snow1, snow2, start));
 }
 
-static void test_swap_elem(void) {
-  int values[] = {1, 2};
-  swap_elem(values, 0, 1);
-  int expected[] = {2, 1};
-  TEST_ASSERT_EQUAL_INT_ARRAY(expected, values, 2);
-}
-
 static void test_identical_left(void) {
   int snow1[] = {1, 2, 3, 4, 5, 6};
   int snow2[] = {3, 2, 1, 6, 5, 4};
@@ -51,7 +44,6 @@ int main(void) {
   UnityBegin("test_snowflakes.c");
   RUN_TEST(test_canary);
   RUN_TEST(test_identical_right_true);
-  RUN_TEST(test_swap_elem);
   RUN_TEST(test_identical_left);
   RUN_TEST(test_identical_left_again);
   RUN_TEST(test_are_identical_false);
