@@ -40,6 +40,15 @@ static void test_are_identical_true_identity(void) {
   TEST_ASSERT_TRUE(are_identical(snow1, snow2));
 }
 
+static void test_identify_identical(void) {
+  int snowflakes[][6] = {{3, 4, 5, 6, 1, 2},
+                         {2, 3, 4, 5, 6, 7},
+                         {4, 5, 6, 7, 8, 9},
+                         {1, 2, 3, 4, 5, 6}};
+  identify_identical(snowflakes, 4);
+  TEST_PASS();
+}
+
 int main(void) {
   UnityBegin("test_snowflakes.c");
   RUN_TEST(test_canary);
@@ -48,6 +57,7 @@ int main(void) {
   RUN_TEST(test_identical_left_again);
   RUN_TEST(test_are_identical_false);
   RUN_TEST(test_are_identical_true_identity);
+  RUN_TEST(test_identify_identical);
 
   return UnityEnd();
 }
