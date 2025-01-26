@@ -3,17 +3,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 100000
-
-static int snowflakes[SIZE][6];
+static snowflake_node *snowflakes[SIZE] = {NULL};
 
 int main(void) {
+  snowflake_node *snow;
   int n;
   assert(scanf("%d", &n));
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n; i++) {
+    snow = malloc(sizeof(snowflake_node));
+    if (snow == NULL) {
+      fprintf(stderr, "malloc error\n");
+      exit(1);
+    }
     for (int j = 0; j < 6; j++)
-      assert(scanf("%d", &snowflakes[i][j]));
-
-  identify_identical(snowflakes, n);
+      assert(scanf("%d", &snow->snowflake[j]));
+    int snowflake_code = code(snow->snowflake);
+    snow->next = snowflakes[snowflake_code];
+    snowflakes[snowflake_code] = snow;
+  }
+  identify_identical(snowflakes);
   return EXIT_SUCCESS;
 }
